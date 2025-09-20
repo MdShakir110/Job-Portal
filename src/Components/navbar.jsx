@@ -7,7 +7,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const navigationLinks = [
-    { name: "Home", path: "/" },
+    { name: "Find Jobs", path: "/find-jobs" },
     { name: "Top Companies", path: "/top-companies" },
     { name: "Job Tracker", path: "/job-tracker" },
     { name: "My Calendar", path: "/my-calendar" },
@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-40">
+      <nav className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Left side - Logo */}
@@ -30,19 +30,18 @@ const Navbar = () => {
                 alt="Find Jobs Logo"
                 className="h-10 w-10 rounded-lg object-cover"
               />
-              <span className="text-xl font-bold text-blue-800">Find Jobs</span>
             </Link>
 
             {/* Center Nav (Desktop) */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  className={`px-3 py-2 text-md transition-colors duration-200 ${
                     isActiveLink(link.path)
-                      ? "text-blue-600 border-b-2 border-blue-600"
-                      : "text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-300"
+                      ? "font-bold bg-gradient-to-r from-blue-600 to-gray-900 bg-clip-text text-transparent"
+                      : "text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 font-light"
                   }`}
                 >
                   {link.name}
@@ -53,13 +52,13 @@ const Navbar = () => {
             {/* Right side */}
             <div className="flex items-center space-x-4">
               {/* Search (Desktop) */}
-              <div className="hidden sm:flex items-center space-x-2">
+              <div className="hidden lg:flex items-center space-x-2">
                 <div className="relative">
                   <HiOutlineSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                   <input
                     type="text"
                     placeholder="Search jobs..."
-                    className="pl-10 pr-4 py-2 bg-[#F1F5F9] rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-sm w-64"
+                    className="pl-10 pr-4 py-2  bg-[#F1F5F9] rounded-lg focus:none  focus:border-transparent outline-none text-sm w-64"
                   />
                 </div>
               </div>
@@ -70,7 +69,7 @@ const Navbar = () => {
               </button>
 
               {/* Resume Builder */}
-              <button className="hidden sm:block bg-blue-600 text-white px-4 py-2 rounded-lg font-normal hover:bg-blue-700">
+              <button className="hidden lg:block bg-blue-600 text-white px-4 py-2 rounded-lg font-normal hover:bg-blue-700">
                 Resume Builder
               </button>
 
@@ -84,7 +83,7 @@ const Navbar = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-600 hover:text-blue-600"
+                className="lg:hidden p-2 text-gray-600 hover:text-blue-600"
               >
                 <HiOutlineMenu className="h-6 w-6" />
               </button>
@@ -95,9 +94,9 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="fixed inset-0 bg-black bg-opacity-50"
+            className="fixed inset-0  bg-[rgba(0,0,0,0.2)]"
             onClick={() => setIsMobileMenuOpen(false)}
           ></div>
 
@@ -114,9 +113,6 @@ const Navbar = () => {
                   alt="Find Jobs Logo"
                   className="h-8 w-8 rounded-lg object-cover"
                 />
-                <span className="text-lg font-bold text-gray-900">
-                  Find Jobs
-                </span>
               </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}

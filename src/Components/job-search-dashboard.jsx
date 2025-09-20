@@ -6,7 +6,14 @@ import JobCard from "./job-card";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FiCalendar } from "react-icons/fi";
-import { jobs, recommendedJobs, latestJobs } from "../data/jobsData";
+import {
+  jobs,
+  recommendedJobs,
+  latestJobs,
+  similarTags,
+  jobTypes,
+  locations,
+} from "../data/jobsData";
 const JobSearchDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
@@ -94,7 +101,7 @@ const JobSearchDashboard = () => {
         <div className="flex-1 p-6">
           <div>
             {/* Header */}
-            <div className="mb-6">
+            <div className="mb-4">
               <h1 className="text-2xl font-bold text-gray-800">
                 Find your Dream Job,{" "}
                 <span className="text-blue-600 cursor-pointer hover:underline">
@@ -124,32 +131,37 @@ const JobSearchDashboard = () => {
                   </div>
                 </div>
 
-                {/* Location Input */}
+                {/* Location Dropdown */}
                 <div>
                   <div className="relative">
                     <FiMapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-                    <input
-                      type="text"
-                      placeholder="Select Location"
+                    <select
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      className="w-full pl-9 pr-4 py-3  border-l border-gray-200  focus:none focus:none focus:outline-none text-sm"
-                    />
+                      className="w-full pl-9 pr-4 py-3 border-l border-gray-200 focus:outline-none text-sm text-gray-400"
+                    >
+                      <option value="">Select Location</option>
+                      {locations.map((loc) => (
+                        <option key={loc.value} value={loc.value}>
+                          {loc.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
-
                 {/* Job Type Dropdown */}
                 <div>
                   <select
                     value={jobType}
                     onChange={(e) => setJobType(e.target.value)}
-                    className="w-full px-3 py-3  border-l border-gray-200 focus:none focus:none focus:outline-nonetext-sm text-gray-400"
+                    className="w-full px-3 py-3 border-l border-gray-200 focus:outline-none text-sm text-gray-400"
                   >
                     <option value="">Job Type</option>
-                    <option value="full-time">Full Time</option>
-                    <option value="part-time">Part Time</option>
-                    <option value="contract">Contract</option>
-                    <option value="remote">Remote</option>
+                    {jobTypes.map((job) => (
+                      <option key={job.value} value={job.value}>
+                        {job.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -166,15 +178,14 @@ const JobSearchDashboard = () => {
               <span className="text-md flex items-center text-gray-500">
                 Similar :
               </span>
-              <bmdton className="px-3 py-2 text-xs bg-gray-100 text-gray-600 border rounded-md hover:bg-blue-100 hover:text-blue-600 transition">
-                Frontend
-              </bmdton>
-              <button className="px-3 py-2 text-xs bg-gray-100 text-gray-600  border rounded-md hover:bg-blue-100 hover:text-blue-600 transition">
-                Backend
-              </button>
-              <button className="px-3 py-2 text-xs bg-gray-100 text-gray-600 border rounded-md hover:bg-blue-100 hover:text-blue-600 transition">
-                Graphic Designer
-              </button>
+              {similarTags.map((tag) => (
+                <button
+                  key={tag}
+                  className="px-3 py-2 text-xs bg-gray-100 text-gray-600 border rounded-md hover:bg-blue-100 hover:text-blue-600 transition"
+                >
+                  {tag}
+                </button>
+              ))}
             </div>
           </div>
           {/* Featured Jobs */}

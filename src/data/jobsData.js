@@ -287,3 +287,19 @@ export const latestJobs = [
     companyImage: "/logo.png",
   },
 ];
+
+export const similarTags = ["Frontend", "Backend", "Graphic Designer"];
+
+export const jobTypes = [
+  { value: "full-time", label: "Full Time" },
+  { value: "part-time", label: "Part Time" },
+  { value: "contract", label: "Contract" },
+  { value: "remote", label: "Remote" },
+];
+
+export const locations = [
+  { value: "new-york", label: "New York" },
+  { value: "los-angeles", label: "Los Angeles" },
+  { value: "chicago", label: "Chicago" },
+  { value: "san-francisco", label: "San Francisco" },
+];
