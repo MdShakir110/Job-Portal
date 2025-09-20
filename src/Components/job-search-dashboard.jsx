@@ -1,11 +1,7 @@
-"use client";
-
 import { useState } from "react";
 import { FiSearch, FiMapPin, FiChevronDown } from "react-icons/fi";
 import JobCard from "./job-card";
-import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { FiCalendar } from "react-icons/fi";
 import {
   jobs,
   recommendedJobs,
@@ -14,20 +10,17 @@ import {
   jobTypes,
   locations,
 } from "../data/jobsData";
+import CustomCalendar from "./custom-calendar";
 const JobSearchDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
   const [jobType, setJobType] = useState("");
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [date, setDate] = useState(new Date());
 
   return (
     <div className="min-h-screen bg-background bg-[#F1F5F9]">
       <div className="flex flex-col lg:flex-row px-[2%] ">
         {/* Left Sidebar - User Profile */}
-        <div className="w-full lg:w-80 lg:sticky lg:top-4 h-fit rounded-lg overflow-hidden py-[2%] ">
-          {/* Background Image */}
-
+        <div className="w-full lg:w-80 lg:sticky lg:top-4 h-fit rounded-lg  py-[2%] ">
           <div className="bg-white pb-5 rounded-xl overflow-hidden">
             <div className="relative ">
               <img
@@ -35,7 +28,6 @@ const JobSearchDashboard = () => {
                 alt="Background"
                 className="w-full h-28 object-cover"
               />
-              {/* Profile Image */}
               <div className="absolute left-1/2 -bottom-10 transform -translate-x-1/2">
                 <img
                   src="/professional-headshot-of-albert-flores.jpg"
@@ -45,7 +37,6 @@ const JobSearchDashboard = () => {
               </div>
             </div>
 
-            {/* Profile Info */}
             <div className="pt-12 text-center px-4">
               <h2 className="text-lg font-bold">Albert Flores</h2>
               <p className="text-sm text-gray-500">
@@ -59,7 +50,6 @@ const JobSearchDashboard = () => {
             </div>
           </div>
 
-          {/* Stats */}
           <div className="px-6 py-4 space-y-3 bg-white  my-2 rounded-xl">
             <div className="flex justify-between text-sm ">
               <span className="text-gray-500">Profile Visitors</span>
@@ -76,31 +66,12 @@ const JobSearchDashboard = () => {
               <span className="font-semibold text-blue-600">88</span>
             </div>
           </div>
-
-          {/* Calendar */}
-          <div className="  px-6 py-3  bg-white  my-2 rounded-xl">
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="text-sm font-medium">My calendar</h3>
-              <FiChevronDown
-                className="w-5 h-5 text-gray-600 cursor-pointer"
-                onClick={() => setShowCalendar(!showCalendar)}
-              />
-            </div>
-            <p className="text-xs text-gray-500 mb-2">Upcoming Interviews</p>
-
-            {showCalendar && (
-              <Calendar
-                onChange={setDate}
-                value={date}
-                className="rounded-lg shadow-md p-2"
-              />
-            )}
-          </div>
+          {/* Calendar  */}
+          <CustomCalendar />
         </div>
 
         <div className="flex-1 p-6">
           <div>
-            {/* Header */}
             <div className="mb-4">
               <h1 className="text-2xl font-bold text-gray-800">
                 Find your Dream Job,{" "}
@@ -114,10 +85,8 @@ const JobSearchDashboard = () => {
               </p>
             </div>
 
-            {/* Search Section */}
             <div className=" bg-white rounded-lg shadow-sm p-4 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-3 ">
-                {/* Job Title Input */}
                 <div className="md:col-span-2">
                   <div className="relative">
                     <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -131,7 +100,6 @@ const JobSearchDashboard = () => {
                   </div>
                 </div>
 
-                {/* Location Dropdown */}
                 <div>
                   <div className="relative">
                     <FiMapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -149,7 +117,6 @@ const JobSearchDashboard = () => {
                     </select>
                   </div>
                 </div>
-                {/* Job Type Dropdown */}
                 <div>
                   <select
                     value={jobType}
@@ -165,7 +132,6 @@ const JobSearchDashboard = () => {
                   </select>
                 </div>
 
-                {/* Search Button */}
                 <div>
                   <button className="w-full flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm font-medium">
                     <FiSearch className="mr-2 w-4 h-4" /> Search
@@ -173,7 +139,6 @@ const JobSearchDashboard = () => {
                 </div>
               </div>
             </div>
-            {/* Similar Tags */}
             <div className="flex flex-wrap gap-2 my-4">
               <span className="text-md flex items-center text-gray-500">
                 Similar :
@@ -188,7 +153,6 @@ const JobSearchDashboard = () => {
               ))}
             </div>
           </div>
-          {/* Featured Jobs */}
           <div className="mb-8">
             <div className="flex items-center  gap-4  mb-6">
               <h2 className="text-xl  text-foreground">Featured Jobs</h2>
@@ -204,7 +168,6 @@ const JobSearchDashboard = () => {
             </div>
           </div>
 
-          {/* Recommended Jobs */}
           <div>
             <div className="flex items-center  gap-4  mb-6">
               <h2 className="text-xl  text-foreground">Recommended Jobs</h2>
@@ -219,7 +182,6 @@ const JobSearchDashboard = () => {
             </div>
           </div>
 
-          {/* Latest Jobs */}
           <div>
             <div className="flex items-center  gap-4  my-6">
               <h2 className="text-xl  text-foreground">Latest Jobs</h2>

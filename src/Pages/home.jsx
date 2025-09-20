@@ -1,13 +1,7 @@
-import React from 'react'
-import JobSearchDashboard from '../Components/job-search-dashboard'
+import React from "react";
 
 const Home = () => {
-    
-  return (
-    <div>
-        <JobSearchDashboard/>
-    </div>
-  )
-}
+  return <div>Home</div>;
+};
 
-export default Home
+export default Home;

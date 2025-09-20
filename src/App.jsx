@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import Layout from "./Components/layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loader from "./Components/loader";
+import FindJobs from "./Pages/find-jobs";
 
 // Lazy load pages
 const Home = lazy(() => import("./Pages/home"));
@@ -18,7 +19,8 @@ function App() {
       <Layout>
         <Suspense fallback={<Loader />}>
           <Routes>
-            <Route path="/find-jobs" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/find-jobs" element={<FindJobs />} />
             <Route path="/top-companies" element={<TopCompanies />} />
             <Route path="/job-tracker" element={<JobTracker />} />
             <Route path="/my-calendar" element={<MyCalender />} />

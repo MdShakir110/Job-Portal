@@ -23,7 +23,6 @@ const Navbar = () => {
       <nav className="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Left side - Logo */}
             <Link to="/" className="flex items-center space-x-3">
               <img
                 src="/job-search-logo.jpg"
@@ -32,16 +31,15 @@ const Navbar = () => {
               />
             </Link>
 
-            {/* Center Nav (Desktop) */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-4">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
                   className={`px-3 py-2 text-md transition-colors duration-200 ${
                     isActiveLink(link.path)
-                      ? "font-bold bg-gradient-to-r from-blue-600 to-gray-900 bg-clip-text text-transparent"
-                      : "text-gray-700 hover:text-blue-600 hover:border-b-2 hover:border-blue-300 font-light"
+                      ? "font-bold bg-gradient-to-r from-blue-700 to-gray-800 bg-clip-text text-transparent"
+                      : "text-gray-700 hover:text-blue-600 font-light"
                   }`}
                 >
                   {link.name}
@@ -49,9 +47,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Right side */}
             <div className="flex items-center space-x-4">
-              {/* Search (Desktop) */}
               <div className="hidden lg:flex items-center space-x-2">
                 <div className="relative">
                   <HiOutlineSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -63,24 +59,20 @@ const Navbar = () => {
                 </div>
               </div>
 
-              {/* Mobile Search */}
               <button className="sm:hidden p-2 text-gray-600 hover:text-blue-600">
                 <HiOutlineSearch className="h-6 w-6" />
               </button>
 
-              {/* Resume Builder */}
               <button className="hidden lg:block bg-blue-600 text-white px-4 py-2 rounded-lg font-normal hover:bg-blue-700">
                 Resume Builder
               </button>
 
-              {/* Profile Image */}
               <img
                 src="/professional-profile-avatar.png"
                 alt="Profile"
                 className="h-10 w-10 rounded-full border-2 border-gray-200 hover:border-blue-300 cursor-pointer object-cover"
               />
 
-              {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="lg:hidden p-2 text-gray-600 hover:text-blue-600"
@@ -92,7 +84,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
@@ -101,7 +92,6 @@ const Navbar = () => {
           ></div>
 
           <div className="fixed left-0 top-0 h-full w-80 bg-white shadow-xl">
-            {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <Link
                 to="/"
@@ -122,7 +112,6 @@ const Navbar = () => {
               </button>
             </div>
 
-            {/* Search */}
             <div className="p-4 border-b border-gray-200">
               <div className="relative">
                 <HiOutlineSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
@@ -134,7 +123,6 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Links */}
             <div className="py-4">
               {navigationLinks.map((link) => (
                 <Link
@@ -152,7 +140,6 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Resume Builder */}
             <div className="p-4 border-t border-gray-200">
               <button className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-medium hover:bg-blue-700">
                 Resume Builder
